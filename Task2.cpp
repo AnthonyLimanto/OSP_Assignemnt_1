@@ -17,7 +17,7 @@
 void map2();
 void reduce2();
 void mergeFiles(std::string file1, std::string file2, std::string output_file);
-// node class is a container for the string from sorted files
+// node class is a container for the string from sorted
 class Node {
     private:
         std::string word;
@@ -44,7 +44,6 @@ std::string Node::getWord() const{
 int Node::getId() const{
     return id;
 }
-
 
 int main (void) {
 
@@ -82,45 +81,45 @@ void map2() {
     std::vector <std::string> word_list_length_14;
     std::vector <std::string> word_list_length_15;
 
-    // makes 13 vectors each with different length words
+    // makes 13 vectors each with different length words use plus 1 because it is one letter short for whatever reason i have no idea
     while(getline(file,line)) {
-        if (line.size() == 3) {
+        if (line.size() == 3 + 1) {
             word_list_length_3.push_back(line);
         }
-        if (line.size() == 4) {
+        if (line.size() == 4 + 1) {
             word_list_length_4.push_back(line);
         }
-        if (line.size() == 5) {
+        if (line.size() == 5 + 1) {
             word_list_length_5.push_back(line);
         }
-        if (line.size() == 6) {
+        if (line.size() == 6 + 1) {
             word_list_length_6.push_back(line);
         }
-        if (line.size() == 7) {
+        if (line.size() == 7 + 1) {
             word_list_length_7.push_back(line);
         }
-        if (line.size() == 8) {
+        if (line.size() == 8 + 1) {
             word_list_length_8.push_back(line);
         }
-        if (line.size() == 9) {
+        if (line.size() == 9 + 1) {
             word_list_length_9.push_back(line);
         }
-        if (line.size() == 10) {
+        if (line.size() == 10 + 1) {
             word_list_length_10.push_back(line);
         }
-        if (line.size() == 11) {
+        if (line.size() == 11 + 1) {
             word_list_length_11.push_back(line);
         }
-        if (line.size() == 12) {
+        if (line.size() == 12 + 1) {
             word_list_length_12.push_back(line);
         }
-        if (line.size() == 13) {
+        if (line.size() == 13 + 1) {
             word_list_length_13.push_back(line);
         }
-        if (line.size() == 14) {
+        if (line.size() == 14 + 1) {
             word_list_length_14.push_back(line);
         }
-        if (line.size() == 15) {
+        if (line.size() == 15 + 1) {
             word_list_length_15.push_back(line);
         }
     }
@@ -182,7 +181,7 @@ void map2() {
     if (process_number == 1) {
         std::sort(word_list_length_3.begin(), word_list_length_3.end(), compare);
         std::ofstream myFile("Task2_wordlist/length3.txt");
-        for (long unsigned int i ; i < word_list_length_3.size(); i++) {
+        for (int i = 0; i < word_list_length_3.size(); i++) {
             myFile << word_list_length_3[i] << std::endl;
         }
         myFile.close();
@@ -191,7 +190,7 @@ void map2() {
     if (process_number == 2) {
         std::sort(word_list_length_4.begin(), word_list_length_4.end(), compare);
         std::ofstream myFile("Task2_wordlist/length4.txt");
-        for (long unsigned int i ;i <  word_list_length_4.size(); i++) {
+        for (int i = 0;i <  word_list_length_4.size(); i++) {
             myFile << word_list_length_4[i] << std::endl;
         }
         myFile.close();
@@ -200,7 +199,7 @@ void map2() {
     if (process_number == 3) {
         std::sort(word_list_length_5.begin(), word_list_length_5.end(), compare);
         std::ofstream myFile("Task2_wordlist/length5.txt");
-        for (long unsigned int i ; i < word_list_length_5.size(); i++) {
+        for (int i = 0; i < word_list_length_5.size(); i++) {
             myFile << word_list_length_5[i] << std::endl;
         }
         myFile.close();
@@ -209,7 +208,7 @@ void map2() {
     if (process_number == 4) {
         std::sort(word_list_length_6.begin(), word_list_length_6.end(), compare);
         std::ofstream myFile("Task2_wordlist/length6.txt");
-        for (long unsigned int i ; i < word_list_length_6.size(); i++) {
+        for (int i = 0; i < word_list_length_6.size(); i++) {
             myFile << word_list_length_6[i] << std::endl;
         }
         myFile.close();
@@ -218,7 +217,7 @@ void map2() {
     if (process_number == 5) {
         std::sort(word_list_length_7.begin(), word_list_length_7.end(), compare);
         std::ofstream myFile("Task2_wordlist/length7.txt");
-        for (long unsigned int i ; i <  word_list_length_7.size(); i++) {
+        for (int i = 0; i <  word_list_length_7.size(); i++) {
             myFile << word_list_length_7[i] << std::endl;
         }
         myFile.close();
@@ -227,7 +226,7 @@ void map2() {
     if (process_number == 6) {
         std::sort(word_list_length_8.begin(), word_list_length_8.end(), compare);
         std::ofstream myFile("Task2_wordlist/length8.txt");
-        for (long unsigned int i ; i < word_list_length_8.size(); i++) {
+        for (int i = 0; i < word_list_length_8.size(); i++) {
             myFile << word_list_length_8[i] << std::endl;
         }
         myFile.close();
@@ -236,7 +235,7 @@ void map2() {
     if (process_number == 7) {
         std::sort(word_list_length_9.begin(), word_list_length_9.end(), compare);
         std::ofstream myFile("Task2_wordlist/length9.txt");
-        for (long unsigned int i ; i < word_list_length_9.size(); i++) {
+        for (int i = 0; i < word_list_length_9.size(); i++) {
             myFile << word_list_length_9[i] << std::endl;
         }
         myFile.close();
@@ -245,7 +244,7 @@ void map2() {
     if (process_number == 8) {
         std::sort(word_list_length_10.begin(), word_list_length_10.end(), compare);
         std::ofstream myFile("Task2_wordlist/length10.txt");
-        for (long unsigned int i ; i < word_list_length_10.size(); i++) {
+        for (int i = 0; i < word_list_length_10.size(); i++) {
             myFile << word_list_length_10[i] << std::endl;
         }
         myFile.close();
@@ -254,7 +253,7 @@ void map2() {
     if (process_number == 9) {
         std::sort(word_list_length_11.begin(), word_list_length_11.end(), compare);
         std::ofstream myFile("Task2_wordlist/length11.txt");
-        for (long unsigned int i ; i < word_list_length_11.size(); i++) {
+        for (int i = 0; i < word_list_length_11.size(); i++) {
             myFile << word_list_length_11[i] << std::endl;
         }
         myFile.close();
@@ -263,7 +262,7 @@ void map2() {
     if (process_number == 10) {
         std::sort(word_list_length_12.begin(), word_list_length_12.end(), compare);
         std::ofstream myFile("Task2_wordlist/length12.txt");
-        for (long unsigned int i ; i < word_list_length_12.size(); i++) {
+        for (int i = 0; i < word_list_length_12.size(); i++) {
             myFile << word_list_length_12[i] << std::endl;
         }
         myFile.close();
@@ -272,7 +271,7 @@ void map2() {
     if (process_number == 11) {
         std::sort(word_list_length_13.begin(), word_list_length_13.end(), compare);
         std::ofstream myFile("Task2_wordlist/length13.txt");
-        for (long unsigned int i ; i < word_list_length_13.size(); i++) {
+        for (int i = 0; i < word_list_length_13.size(); i++) {
             myFile << word_list_length_13[i] << std::endl;
         }
         myFile.close();
@@ -281,7 +280,7 @@ void map2() {
     if (process_number == 12) {
         std::sort(word_list_length_14.begin(), word_list_length_14.end(), compare);
         std::ofstream myFile("Task2_wordlist/length14.txt");
-        for (long unsigned int i ;i <  word_list_length_14.size(); i++) {
+        for (int i = 0;i <  word_list_length_14.size(); i++) {
             myFile << word_list_length_14[i] << std::endl;
         }
         myFile.close();
@@ -290,7 +289,7 @@ void map2() {
     if (process_number == 13) {
         std::sort(word_list_length_15.begin(), word_list_length_15.end(), compare);
         std::ofstream myFile("Task2_wordlist/length15.txt");
-        for (long unsigned int i ;i <  word_list_length_15.size(); i++) {
+        for (int i = 0;i <  word_list_length_15.size(); i++) {
             myFile << word_list_length_15[i] << std::endl;
         }
         myFile.close(); 
@@ -472,20 +471,7 @@ void reduce2() {
             done = true;
         }
     }
-    file1.close();
-    file2.close();
-    file3.close();
-    file4.close();
-    file5.close();
-    file6.close();
-    file7.close();
-    file8.close();
-    file9.close();
-    file10.close();
-    file11.close();
-    file12.close();
-    file13.close();
-    output.close();
+
 
 }
 

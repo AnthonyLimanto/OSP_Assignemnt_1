@@ -1,0 +1,1 @@
+cat wlist_match1.txt | grep ^[a-z]*$ | grep -v -E "([a-z])\1{2}"

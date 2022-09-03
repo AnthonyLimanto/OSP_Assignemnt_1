@@ -181,7 +181,7 @@ void map2() {
     if (process_number == 1) {
         std::sort(word_list_length_3.begin(), word_list_length_3.end(), compare);
         std::ofstream myFile("Task2_wordlist/length3.txt");
-        for (int i = 0; i < word_list_length_3.size(); i++) {
+        for (unsigned long int i = 0; i < word_list_length_3.size(); i++) {
             myFile << word_list_length_3[i] << std::endl;
         }
         myFile.close();
@@ -190,7 +190,7 @@ void map2() {
     if (process_number == 2) {
         std::sort(word_list_length_4.begin(), word_list_length_4.end(), compare);
         std::ofstream myFile("Task2_wordlist/length4.txt");
-        for (int i = 0;i <  word_list_length_4.size(); i++) {
+        for (unsigned long int i = 0;i <  word_list_length_4.size(); i++) {
             myFile << word_list_length_4[i] << std::endl;
         }
         myFile.close();
@@ -199,7 +199,7 @@ void map2() {
     if (process_number == 3) {
         std::sort(word_list_length_5.begin(), word_list_length_5.end(), compare);
         std::ofstream myFile("Task2_wordlist/length5.txt");
-        for (int i = 0; i < word_list_length_5.size(); i++) {
+        for (unsigned long int i = 0; i < word_list_length_5.size(); i++) {
             myFile << word_list_length_5[i] << std::endl;
         }
         myFile.close();
@@ -208,7 +208,7 @@ void map2() {
     if (process_number == 4) {
         std::sort(word_list_length_6.begin(), word_list_length_6.end(), compare);
         std::ofstream myFile("Task2_wordlist/length6.txt");
-        for (int i = 0; i < word_list_length_6.size(); i++) {
+        for (unsigned long int i = 0; i < word_list_length_6.size(); i++) {
             myFile << word_list_length_6[i] << std::endl;
         }
         myFile.close();
@@ -217,7 +217,7 @@ void map2() {
     if (process_number == 5) {
         std::sort(word_list_length_7.begin(), word_list_length_7.end(), compare);
         std::ofstream myFile("Task2_wordlist/length7.txt");
-        for (int i = 0; i <  word_list_length_7.size(); i++) {
+        for (unsigned long int i = 0; i <  word_list_length_7.size(); i++) {
             myFile << word_list_length_7[i] << std::endl;
         }
         myFile.close();
@@ -226,7 +226,7 @@ void map2() {
     if (process_number == 6) {
         std::sort(word_list_length_8.begin(), word_list_length_8.end(), compare);
         std::ofstream myFile("Task2_wordlist/length8.txt");
-        for (int i = 0; i < word_list_length_8.size(); i++) {
+        for (unsigned long int i = 0; i < word_list_length_8.size(); i++) {
             myFile << word_list_length_8[i] << std::endl;
         }
         myFile.close();
@@ -235,7 +235,7 @@ void map2() {
     if (process_number == 7) {
         std::sort(word_list_length_9.begin(), word_list_length_9.end(), compare);
         std::ofstream myFile("Task2_wordlist/length9.txt");
-        for (int i = 0; i < word_list_length_9.size(); i++) {
+        for (unsigned long int i = 0; i < word_list_length_9.size(); i++) {
             myFile << word_list_length_9[i] << std::endl;
         }
         myFile.close();
@@ -244,7 +244,7 @@ void map2() {
     if (process_number == 8) {
         std::sort(word_list_length_10.begin(), word_list_length_10.end(), compare);
         std::ofstream myFile("Task2_wordlist/length10.txt");
-        for (int i = 0; i < word_list_length_10.size(); i++) {
+        for (unsigned long int i = 0; i < word_list_length_10.size(); i++) {
             myFile << word_list_length_10[i] << std::endl;
         }
         myFile.close();
@@ -253,7 +253,7 @@ void map2() {
     if (process_number == 9) {
         std::sort(word_list_length_11.begin(), word_list_length_11.end(), compare);
         std::ofstream myFile("Task2_wordlist/length11.txt");
-        for (int i = 0; i < word_list_length_11.size(); i++) {
+        for (unsigned long int i = 0; i < word_list_length_11.size(); i++) {
             myFile << word_list_length_11[i] << std::endl;
         }
         myFile.close();
@@ -262,7 +262,7 @@ void map2() {
     if (process_number == 10) {
         std::sort(word_list_length_12.begin(), word_list_length_12.end(), compare);
         std::ofstream myFile("Task2_wordlist/length12.txt");
-        for (int i = 0; i < word_list_length_12.size(); i++) {
+        for (unsigned long int i = 0; i < word_list_length_12.size(); i++) {
             myFile << word_list_length_12[i] << std::endl;
         }
         myFile.close();
@@ -271,7 +271,7 @@ void map2() {
     if (process_number == 11) {
         std::sort(word_list_length_13.begin(), word_list_length_13.end(), compare);
         std::ofstream myFile("Task2_wordlist/length13.txt");
-        for (int i = 0; i < word_list_length_13.size(); i++) {
+        for (unsigned long int i = 0; i < word_list_length_13.size(); i++) {
             myFile << word_list_length_13[i] << std::endl;
         }
         myFile.close();
@@ -280,7 +280,7 @@ void map2() {
     if (process_number == 12) {
         std::sort(word_list_length_14.begin(), word_list_length_14.end(), compare);
         std::ofstream myFile("Task2_wordlist/length14.txt");
-        for (int i = 0;i <  word_list_length_14.size(); i++) {
+        for (unsigned long int i = 0;i <  word_list_length_14.size(); i++) {
             myFile << word_list_length_14[i] << std::endl;
         }
         myFile.close();
@@ -289,7 +289,7 @@ void map2() {
     if (process_number == 13) {
         std::sort(word_list_length_15.begin(), word_list_length_15.end(), compare);
         std::ofstream myFile("Task2_wordlist/length15.txt");
-        for (int i = 0;i <  word_list_length_15.size(); i++) {
+        for (unsigned long int i = 0;i <  word_list_length_15.size(); i++) {
             myFile << word_list_length_15[i] << std::endl;
         }
         myFile.close(); 

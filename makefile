@@ -7,3 +7,6 @@ Task1: Task1.cpp
 
 Task2: Task2.cpp
 	g++ -Wall -g -o Task2 Task2.cpp
+
+Task3: Task3.cpp
+	g++ -pthread -g -Wall -o Task3 Task3.cpp

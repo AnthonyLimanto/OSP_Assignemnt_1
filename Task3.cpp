@@ -5,10 +5,18 @@
 #include <fstream>
 #include <bits/stdc++.h>
 #include <sys/stat.h>
+#include <fcntl.h>
+#include <errno.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+
 
 #define THIRD_CHAR 2
+#define READ_WRITE 0777
 
 void map3();
+void reduce3();
 bool compareIndex(int lhs, int rhs);
 void* sortByThirdChar(void* arg) ;
 std::vector<int> index1;
@@ -24,8 +32,22 @@ std::vector<int> index10;
 std::vector<int> index11;
 std::vector<int> index12;
 std::vector<int> index13;
-int aaa = 3;
-std::vector<int> tests = {1,2,3,4,5,6,7,12,12,13,14,15};
+
+bool map_done = false;
+bool t1_done = false;
+bool t2_done = false;
+bool t3_done = false;
+bool t4_done = false;
+bool t5_done = false;
+bool t6_done = false;
+bool t7_done = false;
+bool t8_done = false;
+bool t9_done = false;
+bool t10_done = false;
+bool t11_done = false;
+bool t12_done = false;
+bool t13_done = false;
+
 
 std::vector<std::string> global;
 
@@ -40,10 +62,13 @@ int main (int argc, char* argv[]) {
     std::ifstream file("Cleanfile.txt");
     std::string line;
 
+
+
     while(getline(file, line)) {
         global.push_back(line);
     }
     map3();
+    reduce3();
 
     // leaves threads running while main exits so all thread can finish their jobs first // instead of return 0
     pthread_exit(0);
@@ -67,96 +92,291 @@ void* sortByThirdChar(void* arg) {
 //         std::cout << global[i] << std::endl;
 // }
     if (global[(*vec)[0]].size() == 4) {
-        std::ofstream myFile("Task3_wordlist/length3.txt");
+        if (mkfifo("/tmp/length3fifo", 0777) == -1) {
+            if (errno != EEXIST) {
+                perror("mkfifo() failed"); 
+            }
+        }
+        int myFile = open("/tmp/length3fifo", O_WRONLY);
+        
+        std::string line1;
         for (auto i1 : *vec) {
-        myFile << global[i1] << std::endl;
+        line1 = global[i1];
+        write(myFile, &line1, sizeof(line1));
         }
-        myFile.close();
+        close(myFile);
+        t1_done = true;
     }
-    if (global[(*vec)[0]].size() == 5) {
-        std::ofstream myFile("Task3_wordlist/length4.txt");
-        for (auto i2 : *vec) {
-        myFile << global[i2] << std::endl;
-        }
-        myFile.close();
-    } 
-    if (global[(*vec)[0]].size() == 6) {
-        std::ofstream myFile("Task3_wordlist/length5.txt");
-        for (auto i3 : *vec) {
-        myFile << global[i3] << std::endl;
-        }
-        myFile.close();
-    } 
-    if (global[(*vec)[0]].size() == 7) {
-        std::ofstream myFile("Task3_wordlist/length6.txt");
-        for (auto i4 : *vec) {
-        myFile << global[i4] << std::endl;
-        }
-        myFile.close();
-    } 
-    if (global[(*vec)[0]].size() == 8) {
-        std::ofstream myFile("Task3_wordlist/length7.txt");
-        for (auto i5 : *vec) {
-        myFile << global[i5] << std::endl;
-        }
-        myFile.close();
-    } 
-    if (global[(*vec)[0]].size() == 9) {
-        std::ofstream myFile("Task3_wordlist/length8.txt");
-        for (auto i6 : *vec) {
-        myFile << global[i6] << std::endl;
-        }
-        myFile.close();
-    } 
-    if (global[(*vec)[0]].size() == 10) {
-        std::ofstream myFile("Task3_wordlist/length9.txt");
-        for (auto i7 : *vec) {
-        myFile << global[i7] << std::endl;
-        }
-        myFile.close();
-    } 
-    if (global[(*vec)[0]].size() == 11) {
-        std::ofstream myFile("Task3_wordlist/length10.txt");
-        for (auto i8 : *vec) {
-        myFile << global[i8] << std::endl;
-        }
-        myFile.close();
-    } 
-    if (global[(*vec)[0]].size() == 12) {
-        std::ofstream myFile("Task3_wordlist/length11.txt");
-        for (auto i9 : *vec) {
-        myFile << global[i9] << std::endl;
-        }
-        myFile.close();
-    } 
-    if (global[(*vec)[0]].size() == 13) {
-        std::ofstream myFile("Task3_wordlist/length12.txt");
-        for (auto i10 : *vec) {
-        myFile << global[i10] << std::endl;
-        }
-        myFile.close();
-    } 
-    if (global[(*vec)[0]].size() == 14) {
-        std::ofstream myFile("Task3_wordlist/length13.txt");
-        for (auto i11 : *vec) {
-        myFile << global[i11] << std::endl;
-        }
-        myFile.close();
-    } 
-    if (global[(*vec)[0]].size() == 15) {
-        std::ofstream myFile("Task3_wordlist/length14.txt");
-        for (auto i12 : *vec) {
-        myFile << global[i12] << std::endl;
-        }
-        myFile.close();
-    } 
-    if (global[(*vec)[0]].size() == 16) {
-        std::ofstream myFile("Task3_wordlist/length15.txt");
-        for (auto i13 : *vec) {
-        myFile << global[i13] << std::endl;
-        }
-        myFile.close();
-    } 
+    // if (global[(*vec)[0]].size() == 5) {
+    //     if (mkfifo("/tmp/length4fifo", 0777) == -1) {
+    //         if (errno != EEXIST) {
+    //             perror("mkfifo() failed"); 
+    //         }
+    //     }
+    //     int myFile = open("/tmp/length4fifo", O_WRONLY);
+        
+    //     std::string line2;
+    //     for (auto i2 : *vec) {
+    //     line2 = global[i2];
+    //     write(myFile, &line2, sizeof(line2));
+    //     }
+    //     close(myFile);
+    //     t2_done = true;
+    // }
+    // if (global[(*vec)[0]].size() == 6) {
+    //     if (mkfifo("/tmp/length5fifo", 0777) == -1) {
+    //         if (errno != EEXIST) {
+    //             perror("mkfifo() failed"); 
+    //         }
+    //     }
+    //     int myFile = open("/tmp/length5fifo", O_WRONLY);
+        
+    //     std::string line3;
+    //     for (auto i3 : *vec) {
+    //     line3 = global[i3];
+    //     write(myFile, &line3, sizeof(line3));
+    //     }
+    //     close(myFile);
+    //     t3_done = true;
+    // }
+    // if (global[(*vec)[0]].size() == 7) {
+    //     if (mkfifo("/tmp/length6fifo", 0777) == -1) {
+    //         if (errno != EEXIST) {
+    //             perror("mkfifo() failed"); 
+    //         }
+    //     }
+    //     int myFile = open("/tmp/length6fifo", O_WRONLY);
+        
+    //     std::string line4;
+    //     for (auto i4 : *vec) {
+    //     line4 = global[i4];
+    //     write(myFile, &line4, sizeof(line4));
+    //     }
+    //     close(myFile);
+    //     t4_done = true;
+    // }
+    // if (global[(*vec)[0]].size() == 8) {
+    //     if (mkfifo("/tmp/length7fifo", 0777) == -1) {
+    //         if (errno != EEXIST) {
+    //             perror("mkfifo() failed"); 
+    //         }
+    //     }
+    //     int myFile = open("/tmp/length7fifo", O_WRONLY);
+        
+    //     std::string line5;
+    //     for (auto i5 : *vec) {
+    //     line5 = global[i5];
+    //     write(myFile, &line5, sizeof(line5));
+    //     }
+    //     close(myFile);
+    //     t5_done = true;
+    // }
+    // // TO DO FIXX REST OF FIFO FILE NAMES
+    // if (global[(*vec)[0]].size() == 9) {
+    //     if (mkfifo("/tmp/length3fifo", 0777) == -1) {
+    //         if (errno != EEXIST) {
+    //             perror("mkfifo() failed"); 
+    //         }
+    //     }
+    //     int myFile = open("/tmp/length3fifo", O_WRONLY);
+        
+    //     std::string line1;
+    //     for (auto i1 : *vec) {
+    //     line1 = global[i1];
+    //     write(myFile, &line1, sizeof(line1));
+    //     }
+    //     close(myFile);
+    // }
+    // if (global[(*vec)[0]].size() == 4) {
+    //     if (mkfifo("/tmp/length3fifo", 0777) == -1) {
+    //         if (errno != EEXIST) {
+    //             perror("mkfifo() failed"); 
+    //         }
+    //     }
+    //     int myFile = open("/tmp/length3fifo", O_WRONLY);
+        
+    //     std::string line1;
+    //     for (auto i1 : *vec) {
+    //     line1 = global[i1];
+    //     write(myFile, &line1, sizeof(line1));
+    //     }
+    //     close(myFile);
+    // }
+    // if (global[(*vec)[0]].size() == 4) {
+    //     if (mkfifo("/tmp/length3fifo", 0777) == -1) {
+    //         if (errno != EEXIST) {
+    //             perror("mkfifo() failed"); 
+    //         }
+    //     }
+    //     int myFile = open("/tmp/length3fifo", O_WRONLY);
+        
+    //     std::string line1;
+    //     for (auto i1 : *vec) {
+    //     line1 = global[i1];
+    //     write(myFile, &line1, sizeof(line1));
+    //     }
+    //     close(myFile);
+    // }
+    // if (global[(*vec)[0]].size() == 4) {
+    //     if (mkfifo("/tmp/length3fifo", 0777) == -1) {
+    //         if (errno != EEXIST) {
+    //             perror("mkfifo() failed"); 
+    //         }
+    //     }
+    //     int myFile = open("/tmp/length3fifo", O_WRONLY);
+        
+    //     std::string line1;
+    //     for (auto i1 : *vec) {
+    //     line1 = global[i1];
+    //     write(myFile, &line1, sizeof(line1));
+    //     }
+    //     close(myFile);
+    // }
+    // if (global[(*vec)[0]].size() == 4) {
+    //     if (mkfifo("/tmp/length3fifo", 0777) == -1) {
+    //         if (errno != EEXIST) {
+    //             perror("mkfifo() failed"); 
+    //         }
+    //     }
+    //     int myFile = open("/tmp/length3fifo", O_WRONLY);
+        
+    //     std::string line1;
+    //     for (auto i1 : *vec) {
+    //     line1 = global[i1];
+    //     write(myFile, &line1, sizeof(line1));
+    //     }
+    //     close(myFile);
+    // }
+    // if (global[(*vec)[0]].size() == 4) {
+    //     if (mkfifo("/tmp/length3fifo", 0777) == -1) {
+    //         if (errno != EEXIST) {
+    //             perror("mkfifo() failed"); 
+    //         }
+    //     }
+    //     int myFile = open("/tmp/length3fifo", O_WRONLY);
+        
+    //     std::string line1;
+    //     for (auto i1 : *vec) {
+    //     line1 = global[i1];
+    //     write(myFile, &line1, sizeof(line1));
+    //     }
+    //     close(myFile);
+    // }
+    // if (global[(*vec)[0]].size() == 4) {
+    //     if (mkfifo("/tmp/length3fifo", 0777) == -1) {
+    //         if (errno != EEXIST) {
+    //             perror("mkfifo() failed"); 
+    //         }
+    //     }
+    //     int myFile = open("/tmp/length3fifo", O_WRONLY);
+        
+    //     std::string line1;
+    //     for (auto i1 : *vec) {
+    //     line1 = global[i1];
+    //     write(myFile, &line1, sizeof(line1));
+    //     }
+    //     close(myFile);
+    // }
+    // if (global[(*vec)[0]].size() == 4) {
+    //     if (mkfifo("/tmp/length3fifo", 0777) == -1) {
+    //         if (errno != EEXIST) {
+    //             perror("mkfifo() failed"); 
+    //         }
+    //     }
+    //     int myFile = open("/tmp/length3fifo", O_WRONLY);
+        
+    //     std::string line1;
+    //     for (auto i1 : *vec) {
+    //     line1 = global[i1];
+    //     write(myFile, &line1, sizeof(line1));
+    //     }
+    //     close(myFile);
+    // }
+
+    // if (global[(*vec)[0]].size() == 5) {
+    //     std::ofstream myFile("Task3_wordlist/length4.txt");
+    //     for (auto i2 : *vec) {
+    //     myFile << global[i2] << std::endl;
+    //     }
+    //     myFile.close();
+    // } 
+    // if (global[(*vec)[0]].size() == 6) {
+    //     std::ofstream myFile("Task3_wordlist/length5.txt");
+    //     for (auto i3 : *vec) {
+    //     myFile << global[i3] << std::endl;
+    //     }
+    //     myFile.close();
+    // } 
+    // if (global[(*vec)[0]].size() == 7) {
+    //     std::ofstream myFile("Task3_wordlist/length6.txt");
+    //     for (auto i4 : *vec) {
+    //     myFile << global[i4] << std::endl;
+    //     }
+    //     myFile.close();
+    // } 
+    // if (global[(*vec)[0]].size() == 8) {
+    //     std::ofstream myFile("Task3_wordlist/length7.txt");
+    //     for (auto i5 : *vec) {
+    //     myFile << global[i5] << std::endl;
+    //     }
+    //     myFile.close();
+    // } 
+    // if (global[(*vec)[0]].size() == 9) {
+    //     std::ofstream myFile("Task3_wordlist/length8.txt");
+    //     for (auto i6 : *vec) {
+    //     myFile << global[i6] << std::endl;
+    //     }
+    //     myFile.close();
+    // } 
+    // if (global[(*vec)[0]].size() == 10) {
+    //     std::ofstream myFile("Task3_wordlist/length9.txt");
+    //     for (auto i7 : *vec) {
+    //     myFile << global[i7] << std::endl;
+    //     }
+    //     myFile.close();
+    // } 
+    // if (global[(*vec)[0]].size() == 11) {
+    //     std::ofstream myFile("Task3_wordlist/length10.txt");
+    //     for (auto i8 : *vec) {
+    //     myFile << global[i8] << std::endl;
+    //     }
+    //     myFile.close();
+    // } 
+    // if (global[(*vec)[0]].size() == 12) {
+    //     std::ofstream myFile("Task3_wordlist/length11.txt");
+    //     for (auto i9 : *vec) {
+    //     myFile << global[i9] << std::endl;
+    //     }
+    //     myFile.close();
+    // } 
+    // if (global[(*vec)[0]].size() == 13) {
+    //     std::ofstream myFile("Task3_wordlist/length12.txt");
+    //     for (auto i10 : *vec) {
+    //     myFile << global[i10] << std::endl;
+    //     }
+    //     myFile.close();
+    // } 
+    // if (global[(*vec)[0]].size() == 14) {
+    //     std::ofstream myFile("Task3_wordlist/length13.txt");
+    //     for (auto i11 : *vec) {
+    //     myFile << global[i11] << std::endl;
+    //     }
+    //     myFile.close();
+    // } 
+    // if (global[(*vec)[0]].size() == 15) {
+    //     std::ofstream myFile("Task3_wordlist/length14.txt");
+    //     for (auto i12 : *vec) {
+    //     myFile << global[i12] << std::endl;
+    //     }
+    //     myFile.close();
+    // } 
+    // if (global[(*vec)[0]].size() == 16) {
+    //     std::ofstream myFile("Task3_wordlist/length15.txt");
+    //     for (auto i13 : *vec) {
+    //     myFile << global[i13] << std::endl;
+    //     }
+    //     myFile.close();
+    // } 
 }
 // void* sort2(void* arg) {
 //       // lambda function for custom compare in sort()
@@ -372,25 +592,20 @@ void map3() {
     pthread_create(&t13, NULL, &sortByThirdChar, &index1);
 
 
-    // pthread_create(&t2, NULL, std::sort(index2.begin(), index2.end(), compare), NULL);
-    // pthread_create(&t3, NULL, std::sort(index3.begin(), index3.end(), compare), NULL);
-    // pthread_create(&t4, NULL, &std::sort(index4.begin(), index4.end(), compare), NULL);
-    // pthread_create(&t5, NULL, &std::sort(index5.begin(), index5.end(), compare), NULL);
-    // pthread_create(&t6, NULL, &std::sort(index6.begin(), index6.end(), compare), NULL);
-    // pthread_create(&t7, NULL, &std::sort(index7.begin(), index7.end(), compare), NULL);
-    // pthread_create(&t8, NULL, &std::sort(index8.begin(), index8.end(), compare), NULL);
-    // pthread_create(&t9, NULL, &std::sort(index9.begin(), index9.end(), compare), NULL);
-    // pthread_create(&t10, NULL, &std::sort(index10.begin(), index10.end(), compare), NULL);
-    // pthread_create(&t11, NULL, &std::sort(index11.begin(), index11.end(), compare), NULL);
-    // pthread_create(&t12, NULL, &std::sort(index12.begin(), index12.end(), compare), NULL);
-    // pthread_create(&t13, NULL, &std::sort(index13.begin(), index13.end(), compare), NULL);
+    // speed up the runtime by 50%
     pthread_join(t1, NULL);
-    pthread_join(t1, NULL);
-    pthread_join(t1, NULL);
-    pthread_join(t1, NULL);
-    pthread_join(t1, NULL);
-    pthread_join(t1, NULL);
-    pthread_join(t1, NULL);
+    pthread_join(t2, NULL);
+    pthread_join(t3, NULL);
+    pthread_join(t4, NULL);
+    pthread_join(t5, NULL);
+    pthread_join(t6, NULL);
+    pthread_join(t7, NULL);
+    pthread_join(t8, NULL);
+    pthread_join(t9, NULL);
+    pthread_join(t10, NULL);
+    pthread_join(t11, NULL);
+    pthread_join(t12, NULL);
+    pthread_join(t13, NULL);
     
     // Testing index1
     // for (std::vector<std::string>::size_type i = 0; i != index1.size(); i++) {
@@ -401,4 +616,32 @@ void map3() {
     //     std::cout << global[index1[i]] << std::endl;
     // }
 
+}
+
+void reduce3() {
+    int fd = open("/tmp/length3fifo", O_RDONLY);
+
+    std::vector<std::string> mh;
+
+    std::string line;
+
+    write(fd, &line, sizeof(std::string));
+    mh.push_back(line);
+
+    bool done = false;
+
+    std::ofstream output("Task3_wordlist/sorted.txt");
+    printf("in reduce3");
+    while(!done) {
+        printf("in loop");
+        std::string tmp = mh.front();
+        mh.erase(mh.begin());
+        output << tmp << std::endl;
+        if (write(fd, &line, sizeof(std::string)) != -1) {
+           mh.push_back(line);
+        }
+        if (write(fd, &line, sizeof(std::string)) == -1) {
+            done = true;
+        }
+    }
 }

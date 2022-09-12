@@ -59,12 +59,12 @@ void map2() {
     return lhs[THIRD_CHAR] < rhs[THIRD_CHAR];
 };
 
-    std::cout << "Enter Input File" << std::endl;
-    std::string filename;
-    std::cin >> filename;
+    // std::cout << "Enter Input File" << std::endl;
+    // std::string filename;
+    // std::cin >> filename;
 
 
-    std::fstream file(filename);
+    std::fstream file("Cleanfile.txt");
     std::string line;
 
     std::vector <std::string> word_list_length_3;

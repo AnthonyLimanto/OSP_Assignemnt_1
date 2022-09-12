@@ -1,6 +1,6 @@
 # USAGE
 # compiles all task then makes an executable for each one
-all: Task1 Task2
+all: Task1 Task2 Task3
 
 Task1: Task1.cpp
 	g++ -Wall -g -o Task1 Task1.cpp

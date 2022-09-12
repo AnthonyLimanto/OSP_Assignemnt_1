@@ -3,7 +3,10 @@ Use make to compile all the task
 Task 1 must be ran before task 2 and 3 because it generate the Cleanfile.txt that task 2 and 3 require
 For task 2 and 3 there must be a Task2_wordlist folder and a Task3_wordlist folder
 
-For task 1 you run by typing in ./Task1 then it will prompt you to input a txt file to clean it, it then outputs a file called Cleanfile.txt
+For task 1 you run by typing in ./Task1 then it will prompt you to input a txtS file to clean it, it then outputs a file called Cleanfile.txt
 
 Running task 2 will read from Cleanfile.txt and outputs the sorted files in Task2_wordlist
 Running task 3 will read from Cleanfile.txt and outputs the sorted files in Task3_wordlist
+
+
+Also if for some reason Task 1 doesnt work include is a folder called Clean which contains the cleanfile.txt to be used if the task 1 doenst work
